@@ -5,15 +5,15 @@ This is an introduction to the Qiime2 multiverse. The main Qiime2 webpage has ma
 
 ## Lessons
 
-[**Overview of Qiime2**](overview.md)
+* [**Overview of Qiime2**](overview.md)
 
-[**Basic tools for this workshop**](basic_tools.md)
+* [**Basic tools for this workshop**](basic_tools.md)
 
-[**Initial Workflow**](first_workflow.md)
+* [**Initial Workflow**](first_workflow.md)
 
-[**Exploring Taxonomy Assignment**](taxonomy_assignment/Exploring_Taxonomy_Assignment)
+* [**Exploring Taxonomy Assignment**](taxonomy_assignment/Exploring_Taxonomy_Assignment)
 
-[**Diversity Analyses**](diversity_analyses/diversity_analyses.md)
+* [**Diversity Analyses**](diversity_analyses/diversity_analyses.md)
 
 
 ## Important Links

@@ -124,13 +124,14 @@ qiime taxa barplot \
 [**VISUALISATION: taxonomy bar plots**](taxonomy_bar_plots/index.html)
 
 
-## Run importing and denoising steps with run 1
+## Run through steps again with Run 1 data
 
 Now that you have seen the process through to taxonomic classification, you can repeat these steps for run 1. Every separate sequencing run has to be run through denoising separately, so this is not a redundant step. Do all the steps up to Taxonomy assignment, and then you will merge the tables and rep-seqs from both runs into combined files. Then run the NB taxonomy assignment with the combined files. 
 
 
 ### merge tables from both runs
 
+```
 qiime feature-table merge \
   --i-tables {TABLE-1}.qza \
   --i-tables {TABLE-1}.qza\
@@ -145,6 +146,7 @@ qiime feature-table summarize \
   --i-table {COMBINED-TABLE}.qza \
   --o-visualization {COMBINED-TABLE_VIZ}.qzv \
   --m-sample-metadata-file sample-metadata.tsv
+```
 
 
 

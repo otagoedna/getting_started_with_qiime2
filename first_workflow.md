@@ -44,7 +44,6 @@ You can download the visualisation file to your computer and open it using [Qiim
 [**VISUALISATION: Run 2 demux summary**](run2_demux_summary/index.html)
 
 
-
 ## Denoise sample sequences
 
 Now we are ready to [**denoise**](https://docs.qiime2.org/2019.7/tutorials/overview/#denoising-and-clustering) the samples. In Qiime2, you can use either [**Dada2**](https://benjjneb.github.io/dada2/) or [**Deblur**](https://github.com/biocore/deblur), with most options. (Later we will show you how to import samples that have been denoised using other programs--or with additional parameters not found in the plugins)
@@ -82,7 +81,7 @@ Again, download the visualisations and compare them to here:
 
 ## Taxonomy assignment
 
-Now that we have representative sequences from the denoising process (e.g. ZOTUs, ASVs, ESVs), we can make a taxonomic assignment of them. There are several methods to do this. See the [**Qiime2 Overview**](https://docs.qiime2.org/2019.7/tutorials/overview/#taxonomy-classification-and-taxonomic-analyses) for a discussion of them (Also see this [**paper**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-018-0470-z)). We will start with the machine-learning based classification method, as that is generally favoured by the Qiime group. 
+Now that we have representative sequences from the denoising process (e.g. ZOTUs, ASVs, ESVs), we can make a taxonomic assignment of them. There are several methods to do this. See the [**Qiime2 Overview**](https://docs.qiime2.org/2019.7/tutorials/overview/#taxonomy-classification-and-taxonomic-analyses) for a discussion of them (Also see this [**paper**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-018-0470-z)). We will start with the machine-learning based classification method, as that is generally favoured by the Qiime group.
 
 
 ### Use Naive Bayes (machine learning) to classify

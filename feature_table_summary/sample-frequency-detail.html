@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>q2_feature_table : summarize</title>
+    <link rel="stylesheet" href="./q2templateassets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./q2templateassets/css/normalize.css"/>
+    <link rel="stylesheet" href="./q2templateassets/css/base-template.css"/>
+    <script src="./q2templateassets/js/jquery-3.2.0.min.js" charset="utf-8"></script>
+    <script src="./q2templateassets/js/bootstrap.min.js" charset="utf-8"></script>
+    
+<script src="js/vega.min.js"></script>
+<script src="js/vega-embed.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/spinkit.css" /> 
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="q2templatesheader" class="row">
+        <div class="col-lg-12">
+          <a href="http://qiime2.org/">
+            <img src="./q2templateassets/img/qiime2-rect-200.png"
+            alt="QIIME 2">
+          </a>
+        </div>
+      </div>
+        
+
+  <div class="row">
+    <div class="col-lg-12">
+      <ul class="nav nav-tabs">
+        
+          <li class="">
+            <a href="index.html">
+              Overview
+            </a>
+          </li>
+        
+          <li class="active">
+            <a href="sample-frequency-detail.html">
+              Interactive Sample Detail
+            </a>
+          </li>
+        
+          <li class="">
+            <a href="feature-frequency-detail.html">
+              Feature Detail
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      
+
+
+<div class="row">
+
+  <div class="col-lg-8">
+    <div id="plot">
+      <div id="loading" class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3>Plot Controls</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12" id="toolbar"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12" id="metadata-category"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12" id="sampling-depth-slider"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12" id="text-field"></div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+  function handleErrors(errors, element, msg) {
+    console.error(errors);
+    msg = msg === undefined ? '' : msg + '<br><br>';
+    var helpMsg = '<p class="alert alert-danger"> \
+                   There was an error loading and rendering the \
+                   visualization.<br><br>' + msg + 'Please \
+                   copy-and-paste the following error messages when \
+                   reporting this error (please be aware that the content \
+                   of your analysis data and/or metadata is included in \
+                   these messages):</p>';
+    var helpMsgDiv = $('<div></div>');
+    helpMsgDiv.append(helpMsg);
+    helpMsgDiv.append('<pre><code>' + errors.join('\n\n') + '</code></pre>');
+    element.replaceWith(helpMsgDiv);
+  }
+  window.onerror = function(error) {
+    handleErrors([error], $('#loading'));
+  };
+</script>
+<script id="spec" type="application/json">
+{"$schema": "https://vega.github.io/schema/vega/v5.json", "autosize": {"contains": "content", "type": "fit-x", "resize": true}, "width": 800, "data": [{"transform": [{"as": "selectedCategory", "expr": "datum.metadata[category]", "type": "formula"}], "name": "table", "values": [{"id": "aef9e193.1f8c.429e.bfdf.38bb59235e7d", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "treatment", "subject-id": "B101", "week": 0.0, "gsrs": 2.9, "gsrs-diff": 0.0, "administration-route": "Oral", "age": 12.5, "gender": "m", "weight": 63.0, "height": 55.0, "bmi": 14.8}, "frequency": 351.0}, {"id": "14c94c5e.aaf2.414f.a72f.74ccc134b294", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "treatment", "subject-id": "B103", "week": 6.0, "gsrs": 2.3, "gsrs-diff": 0.1, "administration-route": "Rectal", "age": 8.1, "gender": "f", "weight": 50.0, "height": 50.0, "bmi": 14.1}, "frequency": 438.0}, {"id": "cfe0d2d7.c78b.4092.b923.3322b4312c6d", "metadata": {"sequencing-run": "run-2", "sample-type": "stool", "treatment-group": "treatment", "subject-id": "B105", "week": 3.0, "gsrs": 1.5, "gsrs-diff": -1.1, "administration-route": "Oral", "age": 16.5, "gender": "m", "weight": 242.0, "height": 70.0, "bmi": 35.2}, "frequency": 421.0}, {"id": "cfc37a70.9ba6.4d25.b541.4c0ff9d1bfeb", "metadata": {"sequencing-run": "run-2", "sample-type": "stool", "treatment-group": "treatment", "subject-id": "B109", "week": 18.0, "gsrs": 1.6, "gsrs-diff": -1.2, "administration-route": "Rectal", "age": 10.7, "gender": "m", "weight": 113.0, "height": 57.0, "bmi": 24.3}, "frequency": 382.0}, {"id": "593b1c57.09b3.43f2.97b1.7051761e13c9", "metadata": {"sequencing-run": "run-2", "sample-type": "stool", "treatment-group": "control", "subject-id": "B141", "week": 18.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 16.1, "gender": "m", "weight": 165.0, "height": 65.0, "bmi": 27.5}, "frequency": 98.0}, {"id": "5802a92b.5471.435b.bca9.b03e1cef9a14", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B141", "week": 0.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 16.1, "gender": "m", "weight": 165.0, "height": 65.0, "bmi": 27.5}, "frequency": 136.0}, {"id": "832ba500.7ff2.4c91.ac33.76a3aca26460", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B141", "week": 2.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 16.1, "gender": "m", "weight": 165.0, "height": 65.0, "bmi": 27.5}, "frequency": 152.0}, {"id": "08ea0c6b.7a30.4074.bbf6.557480fc5285", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B141", "week": 6.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 16.1, "gender": "m", "weight": 165.0, "height": 65.0, "bmi": 27.5}, "frequency": 348.0}, {"id": "e9494e22.99d6.4e10.868f.208832eb3104", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B141", "week": 8.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 16.1, "gender": "m", "weight": 165.0, "height": 65.0, "bmi": 27.5}, "frequency": 390.0}, {"id": "1230c3fd.efa4.4ad9.8f01.499141965b11", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B141", "week": 10.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 16.1, "gender": "m", "weight": 165.0, "height": 65.0, "bmi": 27.5}, "frequency": 509.0}, {"id": "00954e18.1dcf.40fc.a52e.255f5cda6f9c", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B141", "week": 12.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 16.1, "gender": "m", "weight": 165.0, "height": 65.0, "bmi": 27.5}, "frequency": 262.0}, {"id": "28e84479.bd9f.4d55.bb03.1411b71bdc9b", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B141", "week": 14.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 16.1, "gender": "m", "weight": 165.0, "height": 65.0, "bmi": 27.5}, "frequency": 322.0}, {"id": "eb4ece61.6afe.4c88.8a06.d616dab1dd34", "metadata": {"sequencing-run": "run-2", "sample-type": "stool", "treatment-group": "control", "subject-id": "B143", "week": 18.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 210.0}, {"id": "1037164d.a836.4ebe.bf98.92294a0b60ab", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 0.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 301.0}, {"id": "c2072c98.e9a0.4af2.8cc1.c03be62710d8", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 2.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 341.0}, {"id": "7af6e763.ab6a.49e9.ac6d.5da1c74c54bd", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 4.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 351.0}, {"id": "5a8541e7.b0a2.48c0.8fa1.4cba3f011111", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 6.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 308.0}, {"id": "55f8d345.8251.43a1.ab05.c9418f6fefd7", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 8.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 287.0}, {"id": "4f2698fd.665f.4ed1.be97.ffc1529e21b0", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 10.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 362.0}, {"id": "ea68ac1a.53e3.4523.924f.32ca1d2ac988", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 12.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 435.0}, {"id": "c34ddc28.a67b.4478.b42d.7be7542bb228", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 14.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 135.0}, {"id": "c2e216e3.51c4.4894.8352.48d0fef7efc7", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 16.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 269.0}, {"id": "81a16ca3.6299.40f0.ae7b.fe2dd2ac4243", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B143", "week": 18.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 7.1, "gender": "m", "weight": 63.0, "height": 51.5, "bmi": 16.7}, "frequency": 409.0}, {"id": "1fe19636.3708.4a87.8e5a.cf10d8530d4e", "metadata": {"sequencing-run": "run-2", "sample-type": "stool", "treatment-group": "control", "subject-id": "B145", "week": 18.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 55.0}, {"id": "89d77704.b4a7.497d.be45.7d0612828999", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 0.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 142.0}, {"id": "fa4e5dcc.7b0a.4fb1.989d.b19aec98e047", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 2.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 476.0}, {"id": "b35cd9d4.2301.4c7e.bfb9.f4c329d492e0", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 4.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 187.0}, {"id": "230994e3.5682.432f.b4e4.454ca1901e0f", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 6.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 330.0}, {"id": "0476f5aa.a4f4.4835.ada1.4e72fb601e0a", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 8.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 419.0}, {"id": "3b2b88b4.90b1.44d2.a015.e80e723e996f", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 10.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 458.0}, {"id": "18f853f2.0e63.400e.baac.cad966c6c0a0", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 12.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 237.0}, {"id": "e423f626.6364.438b.ab33.a76afca3c521", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 14.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 189.0}, {"id": "5f291738.ae0e.4805.a842.cd2bb5b50f26", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 16.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 239.0}, {"id": "d8f4038a.7576.4fd3.89c3.60a3f6bc06c0", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B145", "week": 18.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 10.3, "gender": "f", "weight": 80.0, "height": 57.0, "bmi": 17.3}, "frequency": 297.0}, {"id": "04ea008a.d444.4833.988c.a2a3f5d4ad23", "metadata": {"sequencing-run": "run-2", "sample-type": "stool", "treatment-group": "control", "subject-id": "B147", "week": 18.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.1, "gender": "m", "weight": 100.0, "height": 61.0, "bmi": 18.9}, "frequency": 100.0}, {"id": "e8c5ac44.36bc.41cc.8096.d3090e9b156c", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B147", "week": 0.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.1, "gender": "m", "weight": 100.0, "height": 61.0, "bmi": 18.9}, "frequency": 176.0}, {"id": "1654ccec.557a.40f3.b4d9.b263f9e2ad4e", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B147", "week": 2.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.1, "gender": "m", "weight": 100.0, "height": 61.0, "bmi": 18.9}, "frequency": 378.0}, {"id": "84120710.dd14.4def.90b4.c34cbcedd38e", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B147", "week": 4.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.1, "gender": "m", "weight": 100.0, "height": 61.0, "bmi": 18.9}, "frequency": 355.0}, {"id": "1c4ca381.9cc3.4313.a11e.df350bb73ec9", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B147", "week": 8.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.1, "gender": "m", "weight": 100.0, "height": 61.0, "bmi": 18.9}, "frequency": 189.0}, {"id": "ce5c847c.452d.46fc.96d9.ba2ff164a5ab", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B147", "week": 10.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.1, "gender": "m", "weight": 100.0, "height": 61.0, "bmi": 18.9}, "frequency": 381.0}, {"id": "fadb8582.a342.46ba.8926.98ff97240824", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B147", "week": 12.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.1, "gender": "m", "weight": 100.0, "height": 61.0, "bmi": 18.9}, "frequency": 416.0}, {"id": "c287751e.0263.4fda.8aa2.3b717855e2ee", "metadata": {"sequencing-run": "run-2", "sample-type": "stool", "treatment-group": "control", "subject-id": "B159", "week": 18.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.6, "gender": "m", "weight": 70.0, "height": 53.0, "bmi": 17.5}, "frequency": 214.0}, {"id": "2f79545d.8a5d.4fc5.a0ac.5da133096ee3", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B159", "week": 2.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.6, "gender": "m", "weight": 70.0, "height": 53.0, "bmi": 17.5}, "frequency": 281.0}, {"id": "fa6fda2b.4a99.4231.9325.0d74d8ae451c", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B159", "week": 4.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.6, "gender": "m", "weight": 70.0, "height": 53.0, "bmi": 17.5}, "frequency": 422.0}, {"id": "632924ab.bf85.4b8b.b603.f338294a0d9d", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B159", "week": 6.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.6, "gender": "m", "weight": 70.0, "height": 53.0, "bmi": 17.5}, "frequency": 223.0}, {"id": "ad0865f4.0719.4c22.9a3e.1d5ec2f9ad4c", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B159", "week": 8.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.6, "gender": "m", "weight": 70.0, "height": 53.0, "bmi": 17.5}, "frequency": 366.0}, {"id": "2adb40fd.6824.44f2.b71f.dc73c9f82b16", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B159", "week": 10.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.6, "gender": "m", "weight": 70.0, "height": 53.0, "bmi": 17.5}, "frequency": 445.0}, {"id": "0eb12bd1.4548.4004.8dcd.1a71de8b1df5", "metadata": {"sequencing-run": "run-2", "sample-type": "swab", "treatment-group": "control", "subject-id": "B159", "week": 12.0, "gsrs": null, "gsrs-diff": null, "administration-route": null, "age": 12.6, "gender": "m", "weight": 70.0, "height": 53.0, "bmi": 17.5}, "frequency": 437.0}]}, {"transform": [{"type": "aggregate", "groupby": ["selectedCategory"]}], "name": "groupedBySelectedCategory", "source": "table"}, {"transform": [{"expr": "datum.frequency >= samplingDepth", "type": "filter"}, {"type": "aggregate", "groupby": ["selectedCategory"]}], "name": "groupedBySelectedCategoryAndRetained", "source": "table"}], "signals": [{"name": "width", "value": "", "bind": {"input": "text"}, "on": [{"events": {"source": "window", "type": "resize"}, "update": "containerSize()[0]"}]}, {"name": "chartHeight", "update": "width / 2.5"}, {"name": "chartOffset", "value": 20}, {"name": "height", "update": "chartHeight + chartOffset"}, {"name": "tooltip", "value": {}, "on": [{"events": "rect:mouseover", "update": "datum"}, {"events": "rect:mouseout", "update": "{}"}]}, {"bind": {"input": "select", "options": ["sequencing-run", "sample-type", "treatment-group", "subject-id", "week", "gsrs", "gsrs-diff", "administration-route", "age", "gender", "weight", "height", "bmi"], "element": "#metadata-category"}, "name": "category", "value": "sequencing-run"}, {"bind": {"input": "range", "element": "#sampling-depth-slider", "max": 509, "min": 0, "step": 1}, "name": "samplingDepth", "value": 0}], "marks": [{"description": "Interactive rarefaction summary plot", "name": "rarefactionplot", "type": "group", "encode": {"enter": {"x": {"value": 0}, "y": {"signal": "chartOffset"}, "width": {"value": 200}, "height": {"signal": "chartHeight"}}}, "marks": [{"type": "rect", "from": {"data": "groupedBySelectedCategory"}, "encode": {"enter": {"x": {"scale": "xscale", "field": "selectedCategory"}, "width": {"scale": "xscale", "band": 1}, "y": {"scale": "yscale", "field": "count"}, "y2": {"scale": "yscale", "value": 0}}, "update": {"tooltip": {"signal": "{'title': datum.selectedCategory, 'Total Samples': datum.count}"}, "fill": {"value": "#D3D3D3"}}}}, {"type": "rect", "from": {"data": "groupedBySelectedCategoryAndRetained"}, "encode": {"enter": {"x": {"scale": "xscale", "field": "selectedCategory"}, "width": {"scale": "xscale", "band": 1}, "y": {"scale": "yscale", "field": "count"}, "y2": {"scale": "yscale", "value": 0}}, "update": {"tooltip": {"signal": "{'title': datum.selectedCategory, 'Samples Retained': datum.count}"}, "y": {"scale": "yscale", "field": "count"}, "y2": {"scale": "yscale", "value": 0}, "fill": {"value": "#1F77B4"}}, "hover": {"fill": {"value": "#60B3F7"}}}}, {"type": "text", "encode": {"enter": {"align": {"value": "center"}, "baseline": {"value": "top"}, "fill": {"value": "#000000"}}, "update": {"x": {"scale": "xscale", "signal": "tooltip.selectedCategory", "band": 0.5}, "y": {"scale": "yscale", "signal": "tooltip.count", "offset": -12}, "text": {"signal": "tooltip.count"}, "fillOpacity": [{"test": "datum === tooltip", "value": 0}, {"value": 1}]}}}], "scales": [{"name": "xscale", "type": "band", "domain": {"data": "groupedBySelectedCategory", "field": "selectedCategory", "sort": true}, "range": "width", "padding": 0.1, "round": true}, {"name": "yscale", "domain": {"fields": [{"data": "groupedBySelectedCategory", "field": "count"}]}, "nice": true, "range": [{"signal": "chartHeight"}, 0]}], "axes": [{"orient": "bottom", "scale": "xscale", "title": {"signal": "category"}, "labelAngle": 90, "labelAlign": "left", "labelBaseline": "middle"}, {"orient": "left", "scale": "yscale", "title": "Number of Samples", "tickMinStep": 1}]}]}
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var spec = JSON.parse(document.getElementById("spec").innerHTML);
+
+    // Try and come up with a good initial estimate of plot dimensions,
+    // based on the browser dimensions.
+    var opts = {
+      width: $("#plot").width(),
+      height: $("#plot").width() / 2.5
+    };
+
+    vegaEmbed("#plot", spec, opts)
+      .then(function(result) {
+        result.view.logLevel(vega.Warn);
+        // Stash the view object in global namespace for debugging purposes.
+        // Check out https://vega.github.io/vega/docs/api/debugging/
+        // for more details.
+        window.v = result.view;
+      })
+      .catch(function(error) {
+        // From 'js-error-handler.html'
+        handleErrors([error], $("#plot"));
+      });
+
+    // Clean up the vega-embed toolbar
+    var toolbar = $("div .vega-actions").detach();
+    toolbar.addClass("btn-group");
+    toolbar.children("a").each(function() {
+      $(this).addClass("btn btn-default");
+    });
+
+    toolbar.appendTo("#toolbar");
+
+    var category = $("#metadata-category .vega-bind");
+    category
+      .children(".vega-bind-name")
+      .replaceWith("<label> Metadata Category &nbsp;</label>");
+    category.children("select").addClass("form-control");
+
+    var samplingDepthSlider = $("#sampling-depth-slider .vega-bind");
+    $(samplingDepthSlider)
+      .find("label")
+      .remove();
+    $(samplingDepthSlider)
+      .find("input")
+      .attr("id", "range-slider");
+    $(samplingDepthSlider)
+      .find("input")
+      .attr("oninput", "sliderHelperFunction(this.value);");
+    $(samplingDepthSlider).prepend(
+      "<label> Sampling Depth &nbsp; </label> <br>"
+    );
+    $(samplingDepthSlider).append(
+      '<br> <input id="text-box" class="form-control" type="number" value="0" min="0" oninput="textBoxHelperFunction(this.value);" />'
+    );
+    $(samplingDepthSlider).append("(zero implies no even sampling)");
+    samplingDepthSlider.children(".vega-bind-name").replaceWith("");
+
+    var rotateLabels = $("#rotate-labels .vega-bind");
+    rotateLabels
+      .children(".vega-bind-name")
+      .replaceWith("<label> Rotate Labels &nbsp;</label>");
+    rotateLabels.children("checkbox").addClass("form-control");
+  });
+</script>
+
+
+<div class="row">
+  <div class="col-lg-8">
+    <table id="feature-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Sample ID</th>
+          <th scope="col">Feature Count</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<script id="table-data" type="application/json">
+{"1230c3fd.efa4.4ad9.8f01.499141965b11":509.0,"fa4e5dcc.7b0a.4fb1.989d.b19aec98e047":476.0,"3b2b88b4.90b1.44d2.a015.e80e723e996f":458.0,"2adb40fd.6824.44f2.b71f.dc73c9f82b16":445.0,"14c94c5e.aaf2.414f.a72f.74ccc134b294":438.0,"0eb12bd1.4548.4004.8dcd.1a71de8b1df5":437.0,"ea68ac1a.53e3.4523.924f.32ca1d2ac988":435.0,"fa6fda2b.4a99.4231.9325.0d74d8ae451c":422.0,"cfe0d2d7.c78b.4092.b923.3322b4312c6d":421.0,"0476f5aa.a4f4.4835.ada1.4e72fb601e0a":419.0,"fadb8582.a342.46ba.8926.98ff97240824":416.0,"81a16ca3.6299.40f0.ae7b.fe2dd2ac4243":409.0,"e9494e22.99d6.4e10.868f.208832eb3104":390.0,"cfc37a70.9ba6.4d25.b541.4c0ff9d1bfeb":382.0,"ce5c847c.452d.46fc.96d9.ba2ff164a5ab":381.0,"1654ccec.557a.40f3.b4d9.b263f9e2ad4e":378.0,"ad0865f4.0719.4c22.9a3e.1d5ec2f9ad4c":366.0,"4f2698fd.665f.4ed1.be97.ffc1529e21b0":362.0,"84120710.dd14.4def.90b4.c34cbcedd38e":355.0,"aef9e193.1f8c.429e.bfdf.38bb59235e7d":351.0,"7af6e763.ab6a.49e9.ac6d.5da1c74c54bd":351.0,"08ea0c6b.7a30.4074.bbf6.557480fc5285":348.0,"c2072c98.e9a0.4af2.8cc1.c03be62710d8":341.0,"230994e3.5682.432f.b4e4.454ca1901e0f":330.0,"28e84479.bd9f.4d55.bb03.1411b71bdc9b":322.0,"5a8541e7.b0a2.48c0.8fa1.4cba3f011111":308.0,"1037164d.a836.4ebe.bf98.92294a0b60ab":301.0,"d8f4038a.7576.4fd3.89c3.60a3f6bc06c0":297.0,"55f8d345.8251.43a1.ab05.c9418f6fefd7":287.0,"2f79545d.8a5d.4fc5.a0ac.5da133096ee3":281.0,"c2e216e3.51c4.4894.8352.48d0fef7efc7":269.0,"00954e18.1dcf.40fc.a52e.255f5cda6f9c":262.0,"5f291738.ae0e.4805.a842.cd2bb5b50f26":239.0,"18f853f2.0e63.400e.baac.cad966c6c0a0":237.0,"632924ab.bf85.4b8b.b603.f338294a0d9d":223.0,"c287751e.0263.4fda.8aa2.3b717855e2ee":214.0,"eb4ece61.6afe.4c88.8a06.d616dab1dd34":210.0,"1c4ca381.9cc3.4313.a11e.df350bb73ec9":189.0,"e423f626.6364.438b.ab33.a76afca3c521":189.0,"b35cd9d4.2301.4c7e.bfb9.f4c329d492e0":187.0,"e8c5ac44.36bc.41cc.8096.d3090e9b156c":176.0,"832ba500.7ff2.4c91.ac33.76a3aca26460":152.0,"89d77704.b4a7.497d.be45.7d0612828999":142.0,"5802a92b.5471.435b.bca9.b03e1cef9a14":136.0,"c34ddc28.a67b.4478.b42d.7be7542bb228":135.0,"04ea008a.d444.4833.988c.a2a3f5d4ad23":100.0,"593b1c57.09b3.43f2.97b1.7051761e13c9":98.0,"1fe19636.3708.4a87.8e5a.cf10d8530d4e":55.0}
+</script>
+
+<script type="text/javascript">
+  var totalFrequencies = 14629;
+  var sampleCount = 48;
+  var defaultDescription = "Retained " + (totalFrequencies.toLocaleString('en'))
+                                       + " (100.00%) features in "
+                                       + sampleCount + " (100.00%) samples at the specifed sampling depth.";
+
+
+  var textField = document.getElementById('text-field');
+  var tableBody = document.getElementById("table-body");
+  var table = document.getElementById("feature-table");
+
+  // when the viz loads the default description is displayed
+  textField.innerHTML = defaultDescription;
+
+  var sampleFrequency = JSON.parse(document.getElementById("table-data").innerHTML);
+  // get object keys and store them in an ascending order based on the key value
+  // this order is used to create the table rows
+  sortedSampleIDs = Object.keys(sampleFrequency).sort(function(a, b) {
+    var temp = sampleFrequency[a] - sampleFrequency[b];
+    // if two samples have the same number of features then we
+    // determine the order using the sample ID alphabetical order
+    if (temp == 0){
+      return b.localeCompare(a);
+    }
+
+  return temp;
+  });
+
+  sortedSampleIDs.forEach(function(element) {
+    var row = tableBody.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = element;
+    cell2.innerHTML = sampleFrequency[element];
+
+  });
+
+
+  function updateTableandText(val) {
+    var retainedSampleCount = 0;
+
+    // start the counter at 1 to ignore the header row
+    for (var i = 1; row = table.rows[i]; i++) {
+
+      if (Number(row.cells[1].innerHTML) < val) {
+        row.className = "danger";
+      } else {
+        row.className = "";
+        retainedSampleCount += 1;
+      }
+    }
+    if (val == 0){
+
+    textField.innerHTML = defaultDescription;
+
+    }
+    else{
+      var retainedFeatureCount = retainedSampleCount * val;
+      textField.innerHTML = "Retained " + retainedFeatureCount.toLocaleString('en')
+                                        + " (" + (retainedFeatureCount/totalFrequencies*100).toFixed(2) + "%) features in "
+                                        + retainedSampleCount + " (" + (retainedSampleCount/sampleCount*100).toFixed(2)
+                                        +  "%) samples at the specifed sampling depth.";
+    }
+
+  }
+
+
+  function updateSliderVal(val) {
+    var slider = document.getElementById("range-slider");
+    slider.value = val;
+    slider.dispatchEvent(new Event("change"));
+    slider.dispatchEvent(new Event("input"));
+  }
+
+
+  function updateBoxVal(val) {
+    var num = document.getElementById("text-box");
+    num.value = val;
+  }
+
+
+  function sliderHelperFunction(val){
+    updateBoxVal(val);
+    updateTableandText(val);
+
+  }
+
+
+  function textBoxHelperFunction(val){
+    val = parseInt(val);
+    if (val !== val) {
+      val = 0;
+    }
+
+    // make sure the value in the textbox cannot exceed the max count
+    if (val > 509.0){
+      var num = document.getElementById("text-box");
+      num.value = 509.0;
+    }
+    updateSliderVal(val);
+  }
+</script>
+
+
+    </div>
+  </div>
+
+
+    </div>
+    <script type="text/javascript">
+      if (window.frameElement) {
+          document.getElementById('q2templatesheader').remove();
+      }
+    </script>
+    
+
+  </body>
+</html>

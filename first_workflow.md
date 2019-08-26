@@ -70,18 +70,24 @@ qiime metadata tabulate \
 
 qiime feature-table summarize \
   --i-table {TABLE}.qza \
-  --o-visualization {TABLE}.qzv \
+  --o-visualization {TABLE_VIZ}.qzv \
   --m-sample-metadata-file sample-metadata.tsv
 ```
+
+Again, download the visualisations and compare them to here:
+
+[**VISUALISATION: denoising stats**](denoising_stats/index.html)
+
+[**VISUALISATION: feature table summary**](feature_table_summary/index.html)
 
 ## Taxonomy assignment
 
 Now that we have representative sequences from the denoising process (e.g. ZOTUs, ASVs, ESVs), we can make a taxonomic assignment of them. There are several methods to do this. See the [**Qiime2 Overview**](https://docs.qiime2.org/2019.7/tutorials/overview/#taxonomy-classification-and-taxonomic-analyses) for a discussion of them (Also see this [**paper**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-018-0470-z)). We will start with the machine-learning based classification method, as that is generally favoured by the Qiime group. 
 
 
-### Use Naive Bayes [machine learning] to classify
+### Use Naive Bayes (machine learning) to classify
 
-In order to use the Naive Bayes method to assign taxonomy, it is necessary to train the sequence database first. Because this can take a great deal of time, a pre-trained classifier has been made available for you. The [Qiime2 Data Resources page](https://docs.qiime2.org/2019.7/data-resources/) provides some pre-trained classifiers for common primer combinations, as well as links to the Greengenes and Silva databases for 16S and 18S gene studies. For additional primer combinations, or other gene references, there is a [tutorial for training feature classifiers](https://docs.qiime2.org/2019.7/tutorials/feature-classifier/).
+In order to use the Naive Bayes (NB) method to assign taxonomy, it is necessary to train the sequence database first. Because this can take a great deal of time, a pre-trained classifier has been made available for you. The [Qiime2 Data Resources page](https://docs.qiime2.org/2019.7/data-resources/) provides some pre-trained classifiers for common primer combinations, as well as links to the Greengenes and Silva databases for 16S and 18S gene studies. For additional primer combinations, or other gene references, there is a [tutorial for training feature classifiers](https://docs.qiime2.org/2019.7/tutorials/feature-classifier/).
 
 Use the command below, changing the name of the rep-seqs artifact that you have created:
 
@@ -97,8 +103,11 @@ You can then create a visualisation of the classification:
 ```
 qiime metadata tabulate \
   --m-input-file {TAXONOMY}.qza \
-  --o-visualization {TAXONOMY}.qzv
+  --o-visualization {TAXONOMY_VIZ}.qzv
 ```
+
+[**VISUALISATION: taxonomy table**](taxonomy_tabulation/index.html)
+
 
 ### Visualise the taxonomy assignment
 
@@ -109,10 +118,33 @@ qiime taxa barplot \
   --i-table {TABLE}.qza \
   --i-taxonomy {TAXONOMY}.qza \
   --m-metadata-file sample-metadata.tsv \
-  --o-visualization {TAXA-BAR-PLOTS}.qzv
+  --o-visualization {TAXA-BAR-PLOTS_VIZ}.qzv
 ```
 
+[**VISUALISATION: taxonomy bar plots**](taxonomy_bar_plots/index.html)
 
+
+## Run importing and denoising steps with run 1
+
+Now that you have seen the process through to taxonomic classification, you can repeat these steps for run 1. Every separate sequencing run has to be run through denoising separately, so this is not a redundant step. Do all the steps up to Taxonomy assignment, and then you will merge the tables and rep-seqs from both runs into combined files. Then run the NB taxonomy assignment with the combined files. 
+
+
+### merge tables from both runs
+
+qiime feature-table merge \
+  --i-tables {TABLE-1}.qza \
+  --i-tables {TABLE-1}.qza\
+  --o-merged-table {COMBINED-TABLE}.qza
+
+qiime feature-table merge-seqs \
+  --i-data {REP-SEQS-1}.qza \
+  --i-data {REP-SEQS-2}.qza \
+  --o-merged-data {COMBINED-REP-SEQS}.qza
+
+qiime feature-table summarize \
+  --i-table {COMBINED-TABLE}.qza \
+  --o-visualization {COMBINED-TABLE_VIZ}.qzv \
+  --m-sample-metadata-file sample-metadata.tsv
 
 
 

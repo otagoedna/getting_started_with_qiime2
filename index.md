@@ -5,13 +5,13 @@ This is an introduction to the Qiime2 multiverse. The main Qiime2 webpage has ma
 
 ## Lessons
 
-* [**Overview of Qiime2**](overview.md)
+* [**Overview of Qiime2**](https://docs.qiime2.org/2019.7/tutorials/overview/)
 
 * [**Basic tools for this workshop**](basic_tools.md)
 
 * [**Initial Workflow**](first_workflow.md)
 
-* [**Exploring Taxonomy Assignment**](taxonomy_assignment/Exploring_Taxonomy_Assignment)
+* [**Exploring Taxonomy**](taxonomy_assignment/Exploring_Taxonomy_Assignment)
 
 * [**Diversity Analyses**](diversity_analyses/diversity_analyses.md)
 

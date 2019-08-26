@@ -82,6 +82,9 @@ Fortunately, you do not need to have Qiime2 installed to view the visuals. Go to
 
 And you can open any visualisations on your computer. The website has some examples you can check out. Keep this website open as we proceed through the workshop.
 
+There is yet another way to view Qiime2 visualisations. If you export any visual using `qiime tools export` it will convert the .qzv to a folder containing all the web code. You can then go into the folder, and double click on the index.html file, and it will open in a web browser will all the interactivity. 
+
+
 ## Qiime2 metadata file
 
 For most downstream analyses in Qiime2, you need a metadata file. This is essentially a tab-delimited file that lists samples in the first column; additional columns can be used for other fields, and the state of each for each sample.

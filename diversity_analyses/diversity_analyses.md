@@ -37,8 +37,15 @@ qiime diversity core-metrics-phylogenetic \
 
 Several statistical and visual outputs are produced, including PCOA plots. Here is one:
 
-**VISUALISATION: bray-curtis emperor plot**
+[**VISUALISATION: bray-curtis emperor plot**](bray_curtis_emp_pcoa/index.html)
 
+### Alpha diversity (within samples)
+
+
+
+
+
+### Beta diversity (between samples)
 
 
 ## Importing from other programs

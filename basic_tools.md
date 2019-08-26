@@ -15,10 +15,10 @@ source activate qiime2-2019.7
 In order to enable tab completion for Qiime commands:
 
 ```
-
+source tab-qiime
 ```
 
-This should only need to be done once
+This will need to be done each time you activate Qiime, or you can add it to your .bashrc or .bash_profile file
 
 ## Basic Qiime2 commands
 

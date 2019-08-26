@@ -1,4 +1,4 @@
-# Further Exploring Taxonomy Assignment
+# More on Taxonomy
 
 ## Alternatives to Naive Bayes
 
@@ -36,6 +36,7 @@ qiime taxa barplot \
 
 You can also use vsearch to assign taxonomy. This is optional as it takes a bit longer than the others
 
+```
 qiime feature-classifier classify-consensus-vsearch \
   --i-query {REP-SEQS}.qza \
   --i-reference-reads /var/DB/greengenes/gg_99_reference_seqs.qza \
@@ -43,6 +44,7 @@ qiime feature-classifier classify-consensus-vsearch \
   --p-perc-identity 0.97 \
   --o-classification {VSEARCH-TAXONOMY}.qza \
   --verbose
+```
 
 ## Filtering feature tables
 

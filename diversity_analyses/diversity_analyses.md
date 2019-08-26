@@ -97,7 +97,15 @@ qiime diversity core-metrics \
   --output-dir belarus-core-metrics-results
 ```
 
+## Going further with analyses
 
+For more advanced statistical analyses, and to produce publication-quality figures (and have more control over visual details), there is a plug-in called Qiime2R:
+
+[**Qiime2R Github page**](https://github.com/jbisanz/qiime2R)
+
+There is also a tutorial on the Qiime2 Forum:
+
+[**Qiime2R Tutorial**](https://forum.qiime2.org/t/tutorial-integrating-qiime2-and-r-for-data-visualization-and-analysis-using-qiime2r/4121)
 
 
 

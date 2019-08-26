@@ -20,7 +20,7 @@ qiime phylogeny align-to-tree-mafft-fasttree \
 
 It is necessary to set the rarefaction or sampling depth for the analyses (see [**here**](https://docs.qiime2.org/2019.7/tutorials/moving-pictures/#alpha-and-beta-diversity-analysis) for an explanation). This is set with the `--p-sampling-depth` parameter in the core-metrics plugin. You can look at the feature table summary to examine the number of reads for each sample to help set the sampling depth:
 
-[**VISUALISATION: feature table summary**](../feature_table_summary/index.html)
+[**VISUALISATION: feature table summary**](../combined_feature_table_summary/index.html)
 
 ### Run core metrics 
 

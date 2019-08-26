@@ -87,7 +87,7 @@ qiime taxa barplot \
   --i-table {GROUP_BY_WEEK_TABLE}.qza \
   --i-taxonomy {TAXONOMY}.qza \
   --m-metadata-file week_metadata.tsv \
-  --o-visualization {GRP_BY_TYPE_TAXA-BAR-PLOTS}.qzv
+  --o-visualization {GRP_BY_WEEK_TAXA-BAR-PLOTS}.qzv
 ```
 
 

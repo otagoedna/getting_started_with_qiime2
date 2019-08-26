@@ -2,7 +2,7 @@
 
 This will follow the steps from importing the files, setting up metadata, and running initial analyses. 
 
-The example dataset we will be using has been taken from the [Qiime2 Fecal microbiota transplant tutorial (FMT)](https://docs.qiime2.org/2019.7/tutorials/fmt/). We will be following some of the steps there, but here we will be combining from a few different tutorials to present a complete example. 
+The example dataset we will be using has been taken from the [**Qiime2 Fecal microbiota transplant tutorial (FMT)**](https://docs.qiime2.org/2019.7/tutorials/fmt/). We will be following some of the steps there, but here we will be combining from a few different tutorials to present a complete example. 
 
 ## Importing data
 

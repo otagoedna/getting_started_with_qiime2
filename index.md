@@ -7,7 +7,7 @@ This is an introduction to the Qiime2 multiverse. The main Qiime2 webpage has ma
 
 * [**Overview of Qiime2**](https://docs.qiime2.org/2019.7/tutorials/overview/)
 
-* [**Basic tools for this workshop**](basic_tools.md)
+* [**Basic Tools for this Workshop**](basic_tools.md)
 
 * [**Initial Workflow**](first_workflow.md)
 

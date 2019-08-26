@@ -22,9 +22,9 @@ This will need to be done each time you activate Qiime, or you can add it to you
 
 ## Basic Qiime2 commands
 
-For getting help with any qiime command, you add --help after any command:
+For getting help with any qiime command, you use --help
 
-`qiime tools import --help`
+`qiime --help`
 
 
 For this workshop, template commands will be provided initially. It is recommended that you copy these and paste them in a text editor, then change the input/output file names and any other parameters as needed. For the most part, the file names/variables that need to be changed will be in uppercase within curly brackets, like this:

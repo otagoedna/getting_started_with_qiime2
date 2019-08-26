@@ -24,6 +24,9 @@ The problem is that often you do not want to start at the beginning or finish at
 
 ![alt text](images/Slide06.png)
 
+This workshop will attempt to help you work through many of the examples yourself, so you will be able to better utilise the resources.
+
+
 ### Qiime2 basics
 
 ![alt text](images/Slide09.png)

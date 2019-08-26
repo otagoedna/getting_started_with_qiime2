@@ -71,6 +71,10 @@ qiime feature-table summarize \
   --i-table {TABLE}.qza \
   --o-visualization {TABLE_VIZ}.qzv \
   --m-sample-metadata-file sample-metadata.tsv
+
+qiime feature-table tabulate-seqs \
+  --i-data {REP-SEQS}.qza \
+  --o-visualization {REP-SEQS_VIZ}.qzv
 ```
 
 Again, download the visualisations and compare them to here:
@@ -78,6 +82,8 @@ Again, download the visualisations and compare them to here:
 [**VISUALISATION: denoising stats**](denoising_stats/index.html)
 
 [**VISUALISATION: feature table summary**](feature_table_summary/index.html)
+
+[**VISUALISATION: rep seq tabulation**](rep_seqs_tabulate/index.html)
 
 ## Taxonomy assignment
 

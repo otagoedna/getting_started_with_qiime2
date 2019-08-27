@@ -1,0 +1,4 @@
+Group 1,Group 2,Sample size,Permutations,pseudo-F,p-value,q-value
+fmt-material,stool,21,999,1.9486217769371128,0.023,0.0345
+fmt-material,swab,84,999,1.6615054118906016,0.042,0.042
+stool,swab,99,999,2.3254746444479695,0.001,0.003

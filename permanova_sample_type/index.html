@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>q2_diversity : beta_group_significance</title>
+    <link rel="stylesheet" href="./q2templateassets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./q2templateassets/css/normalize.css"/>
+    <link rel="stylesheet" href="./q2templateassets/css/base-template.css"/>
+    <script src="./q2templateassets/js/jquery-3.2.0.min.js" charset="utf-8"></script>
+    <script src="./q2templateassets/js/bootstrap.min.js" charset="utf-8"></script>
+    
+    
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="q2templatesheader" class="row">
+        <div class="col-lg-12">
+          <a href="http://qiime2.org/">
+            <img src="./q2templateassets/img/qiime2-rect-200.png"
+            alt="QIIME 2">
+          </a>
+        </div>
+      </div>
+        
+  
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>Overview</h2>
+      <table border="0" class="dataframe table table-striped table-hover">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PERMANOVA results</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>method name</th>
+      <td>PERMANOVA</td>
+    </tr>
+    <tr>
+      <th>test statistic name</th>
+      <td>pseudo-F</td>
+    </tr>
+    <tr>
+      <th>sample size</th>
+      <td>102</td>
+    </tr>
+    <tr>
+      <th>number of groups</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>test statistic</th>
+      <td>2.0138</td>
+    </tr>
+    <tr>
+      <th>p-value</th>
+      <td>0.002</td>
+    </tr>
+    <tr>
+      <th>number of permutations</th>
+      <td>999</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>Group significance plots</h2>
+      <a href="raw_data.tsv" target="_blank" rel="noopener noreferrer">
+        Download raw data as TSV
+      </a>
+      
+        <div class="row">
+          
+            <div class="col-lg-4 text-center">
+              <a href="fmt-material-boxplots.pdf">
+                <img src="fmt-material-boxplots.png">
+                <br>
+                <p>Download as PDF</p>
+              </a>
+            </div>
+          
+            <div class="col-lg-4 text-center">
+              <a href="stool-boxplots.pdf">
+                <img src="stool-boxplots.png">
+                <br>
+                <p>Download as PDF</p>
+              </a>
+            </div>
+          
+            <div class="col-lg-4 text-center">
+              <a href="swab-boxplots.pdf">
+                <img src="swab-boxplots.png">
+                <br>
+                <p>Download as PDF</p>
+              </a>
+            </div>
+          
+        </div>
+      
+    </div>
+  </div>
+
+  
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Pairwise permanova results</h2>
+        <a href="permanova-pairwise.csv">Download CSV</a>
+        <table border="0" class="dataframe table table-striped table-hover">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Sample size</th>
+      <th>Permutations</th>
+      <th>pseudo-F</th>
+      <th>p-value</th>
+      <th>q-value</th>
+    </tr>
+    <tr>
+      <th>Group 1</th>
+      <th>Group 2</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">fmt-material</th>
+      <th>stool</th>
+      <td>21</td>
+      <td>999</td>
+      <td>1.948622</td>
+      <td>0.023</td>
+      <td>0.0345</td>
+    </tr>
+    <tr>
+      <th>swab</th>
+      <td>84</td>
+      <td>999</td>
+      <td>1.661505</td>
+      <td>0.042</td>
+      <td>0.0420</td>
+    </tr>
+    <tr>
+      <th>stool</th>
+      <th>swab</th>
+      <td>99</td>
+      <td>999</td>
+      <td>2.325475</td>
+      <td>0.001</td>
+      <td>0.0030</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </div>
+  
+
+
+    </div>
+    <script type="text/javascript">
+      if (window.frameElement) {
+          document.getElementById('q2templatesheader').remove();
+      }
+    </script>
+    
+    
+  </body>
+</html>

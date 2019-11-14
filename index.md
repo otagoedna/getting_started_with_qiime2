@@ -18,7 +18,7 @@ This is an introduction to the Qiime2 multiverse. The main Qiime2 webpage has ma
 
 ## Important Links
 
-[Qiime2docs](https://docs.qiime2.org/2019.7/) Main index of all Qiime2 content
+[Qiime2docs](https://docs.qiime2.org/2019.10/) Main index of all Qiime2 content
 
 [Qiime2view](https://view.qiime2.org/) A web browser tool for viewing Qiime2 visualisations
 

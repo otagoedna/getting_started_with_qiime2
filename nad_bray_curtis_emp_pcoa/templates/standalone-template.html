@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Emperor</title>
+    {% include base_dependencies_path %}
+    <meta charset="utf-8">
+
+    {% include style_template_path %}
+
+    <style>
+      #{{ plot_id }} {
+        height:100vh !important;
+        padding: 0px !important;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+      }
+    </style>
+  </head>
+  <body>
+    {% include html_container_path %}
+    <script type="text/javascript">
+    {% include logic_template_path %}
+    </script>
+  </body>
+</html>

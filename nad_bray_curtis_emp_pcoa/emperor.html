@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Emperor</title>
+    <!-- core dependencies that are otherwise included via the jupyter notebook -->
+<script src="./vendor/js/require-2.1.22.min.js"></script>
+<script src="./vendor/js/jquery-2.1.4.min.js"></script>
+    <meta charset="utf-8">
+
+    <script type="text/javascript">
+
+if ($("#emperor-css").length == 0){{
+    $("head").append([
+
+        '<link id="emperor-css" rel="stylesheet" type="text/css" href="./css/emperor.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/jquery-ui.min.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/slick.grid.min.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/spectrum.min.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/chosen.min.css">',
+        '<link rel="stylesheet" type="text/css" href="./vendor/css/jquery.contextMenu.min.css">'
+    ]);
+}}
+</script>
+
+
+    <style>
+      #emperor-notebook-0x69e8e2b2 {
+        height:100vh !important;
+        padding: 0px !important;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='emperor-notebook-0x69e8e2b2' style="position: relative; width:100%; height:500px;">
+  <div class='loading' style="position: absolute;top: 50%;left: 50%;margin-left: -229px; margin-top: -59px; z-index: 10000;height:118px;width:458px;padding:0px"><img src='./img/emperor.png' alt='Emperor resources missing. Expected them to be found in .'></div>
+</div>
+</div>
+    <script type="text/javascript">
+    // When running in the Jupyter notebook we've encountered version conflicts
+// with some dependencies. So instead of polluting the global require context,
+// we define a new context.
+var emperorRequire = require.config({
+'context': 'emperor',
+// the left side is the module name, and the right side is the path
+// relative to the baseUrl attribute, do NOT include the .js extension
+'paths': {
+  /* jQuery */
+  'jquery': './vendor/js/jquery-2.1.4.min',
+  'jqueryui': './vendor/js/jquery-ui.min',
+  'jquery_drag': './vendor/js/jquery.event.drag-2.2.min',
+
+  /* jQuery plugins */
+  'chosen': './vendor/js/chosen.jquery.min',
+  'spectrum': './vendor/js/spectrum.min',
+  'position': './vendor/js/jquery.ui.position.min',
+  'contextmenu': './vendor/js/jquery.contextMenu.min',
+
+  /* other libraries */
+  'underscore': './vendor/js/underscore-min',
+  'chroma': './vendor/js/chroma.min',
+  'filesaver': './vendor/js/FileSaver.min',
+  'blob': './vendor/js/Blob',
+  'canvastoblob': './vendor/js/canvas-toBlob',
+  'd3': './vendor/js/d3.min',
+
+  /* THREE.js and plugins */
+  'three': './vendor/js/three.min',
+  'orbitcontrols': './vendor/js/three.js-plugins/OrbitControls',
+  'projector': './vendor/js/three.js-plugins/Projector',
+  'svgrenderer': './vendor/js/three.js-plugins/SVGRenderer',
+  'canvasrenderer': './vendor/js/three.js-plugins/CanvasRenderer',
+  'selectionbox': './vendor/js/three.js-plugins/SelectionBox',
+  'selectionhelper': './vendor/js/three.js-plugins/SelectionHelper',
+
+  /* SlickGrid */
+  'slickcore': './vendor/js/slick.core.min',
+  'slickgrid': './vendor/js/slick.grid.min',
+  'slickformatters': './vendor/js/slick.editors.min',
+  'slickeditors': './vendor/js/slick.formatters.min',
+  'slickdataview': './vendor/js/slick.dataview.min',
+
+  /* Emperor's objects */
+  'util': './js/util',
+  'model': './js/model',
+  'multi-model': './js/multi-model',
+  'view': './js/view',
+  'controller': './js/controller',
+  'draw': './js/draw',
+  'scene3d': './js/sceneplotview3d',
+  'shapes': './js/shapes',
+  'animationdirector': './js/animate',
+  'trajectory': './js/trajectory',
+  'uistate': './js/ui-state',
+
+  /* controllers */
+  'abcviewcontroller': './js/abc-view-controller',
+  'viewcontroller': './js/view-controller',
+  'colorviewcontroller': './js/color-view-controller',
+  'visibilitycontroller': './js/visibility-controller',
+  'opacityviewcontroller': './js/opacity-view-controller',
+  'scaleviewcontroller': './js/scale-view-controller',
+  'shapecontroller': './js/shape-controller',
+  'axescontroller': './js/axes-controller',
+  'animationscontroller': './js/animations-controller',
+
+  /* editors */
+  'shape-editor': './js/shape-editor',
+  'color-editor': './js/color-editor',
+  'scale-editor': './js/scale-editor'
+
+},
+/*
+   Libraries that are not AMD compatible need shim to declare their
+   dependencies.
+ */
+'shim': {
+  'jquery_drag': {
+    'deps': ['jquery', 'jqueryui']
+  },
+  'chosen': {
+    'deps': ['jquery'],
+    'exports': 'jQuery.fn.chosen'
+  },
+  'contextmenu' : {
+    'deps': ['jquery', 'jqueryui', 'position']
+  },
+  'filesaver' : {
+    'deps': ['blob']
+  },
+  'canvastoblob' : {
+    'deps': ['blob']
+  },
+  'slickcore': ['jqueryui'],
+  'slickgrid': ['slickcore', 'jquery_drag', 'slickformatters', 'slickeditors',
+                'slickdataview']
+}
+});
+
+emperorRequire(
+["jquery", "model", "controller"],
+function($, model, EmperorController) {
+  var DecompositionModel = model.DecompositionModel;
+
+  var div = $('#emperor-notebook-0x69e8e2b2');
+
+  var data = {"info": null, "plot": {"decomposition": {"axes_names": [0, 1, 2, 3, 4], "ci": null, "coordinates": [[-0.6973373557157935, -0.10048504376682028, 0.007175642059021845, -0.18106606247095128, 0.4704582407235499], [-0.7377497876540797, -0.6130105450955974, -0.5508888426061874, -0.11683709865375087, -0.05846621706044027], [-0.38524321728963135, 0.27748832155116754, -0.5696239212125466, -0.11459072099894314, 0.19239790148368585], [-0.7871738992923949, -0.5285874910327488, -0.41820649151741734, 0.08720247796962283, -0.11244895115734276], [0.6335364785720305, -0.18242393872812995, 0.1598076808906634, -0.4372366600620933, -0.04448089901552787], [0.49409967310236946, -0.17639782522787759, 0.17547904595650077, -0.4154656289601807, -0.07304804747305124], [0.8477976900110991, 0.18862556752605714, -0.13879781902692992, 0.28492119355064033, -0.13219243765829533], [-0.17106037212477082, 0.6720913997963172, -0.3425640883907556, 0.014770019523571952, 0.05735654591579064], [0.4050994901819999, 0.4506341576036134, -0.3089672683225366, 0.23652366566478944, -0.1982782734079886], [-0.5117994726979321, 0.1050577791988922, -0.08961904165340717, -0.18344614712647647, 0.429512732399743], [0.6389044557923679, 0.035145763019594316, -0.026431882108807207, -0.09023100379303892, -0.08990925921675413], [0.8973288956731458, -0.3666101049840352, 0.003864761650396856, 0.29450696193224346, 0.2731286173861857], [-0.13252840003569213, 0.6466354970090811, -0.39301159686180065, 0.0048943706384368445, 0.1344730642239796], [-0.015299906389108062, 0.7413035677486463, -0.29185459276591613, 0.08693897696632324, -0.00722681928496326], [0.6931078143905076, -0.212768658983451, 0.1258710031092055, -0.22575459426530692, -0.07624904178153012], [0.42253618545882055, 0.01098024797810352, 0.1159441689999273, -0.5620777955231645, -0.2066853929841315], [1.0, -0.42740767098274624, 0.020300125429926683, 0.7791328217800195, 0.5665404280711557], [-0.5929717063241138, -0.05842329097132316, 0.2627751935012567, 0.3731705144501269, -0.46325363067482195], [-0.5127485514799099, 0.021623744631489795, 0.5779251272639457, -0.003775769617268364, 0.18412097021446447], [-0.4666672881656565, 0.1212961660472232, 0.45911681917783986, -0.02469193240811706, 0.2361308122514554], [-0.7933127872427675, -0.5709562829084442, -0.4240583369094937, 0.007775680867296124, -0.24975731131753184], [-0.5348605053047407, -0.023515631579212538, 0.506821094096415, 0.2826325837171608, -0.29172804951054476], [-0.4031383552311667, 0.24767343863110966, 0.09997890943196724, -0.026862478947340448, 0.03683318511479804], [-0.43730609708556845, 0.14090971257539323, 0.5664302462063185, -0.026353037647134373, 0.17756295149627366], [-0.6360212828921078, -0.08367084631401275, 0.24557536587375542, 0.22442476427197255, -0.1939192141048001], [0.757592569817611, -0.16003222807827766, 0.06989014278601834, -0.13455485581492452, -0.06753197952605272], [0.5767108595382789, -0.003845879399821009, 0.18098998456102364, -0.46246455484224147, -0.14068196319569398], [-0.664669863855908, -0.09397516686315512, -0.15949731219692567, -0.18338300005924466, 0.3446103950771557], [-0.125428579893863, 0.6893218313949365, -0.2853995174288392, 0.024069533731459796, -0.028770225171101692], [0.9537209133941132, -0.1575526293810076, -0.06758397604464404, 0.18720047765121015, 0.07297671969677998], [-0.5683585189431246, -0.015851823608417283, 0.3180944659390666, 0.3068602698184892, -0.4461064451258514], [-0.7236452571410767, -0.7490328692271196, -0.540990395104122, -0.01586970926371312, -0.030415543786511595], [0.7834575448653588, -0.2472558525996692, 0.10550470449444284, -0.3261060150797974, -0.054184486748572964], [0.46776302519392604, 0.2570666147113175, -0.23368367452597888, 0.2093979943550293, -0.27738718028992887], [-0.4137532372874161, 0.21977793168456622, 0.48906327964969915, -0.03517715953972902, 0.11074479108737312], [0.6651694955611643, 0.018258886032395883, -0.16014433211111248, 0.04768204117173382, -0.1902554854620371], [-0.5404551123120895, -0.04700899301913897, 0.5159662422618413, 0.14069027874890963, 0.09399983269281635], [0.9070746619283307, -0.23906875392369512, 0.01120508036019053, 0.14585895155812828, 0.1072564985070345], [-0.2923701991222116, 0.21399089953479802, -0.016455994911994128, -0.1727093532937612, -0.05512683238877447]], "edges": [], "percents_explained": [24.58471120665199, 7.733277882701748, 6.571782127675252, 4.274858647515989, 3.3593331511722515], "sample_ids": ["WOOD_002_M_20210708", "SRER_004_M_20210809", "YELL_003_M_20210708", "SRER_052_M_20210810", "TOOL_042_O_20210803", "TOOL_041_O_20210803", "NIWO_002_M_20210728", "YELL_005_M_20210708", "TEAK_003_M_20210726", "WOOD_004_M_20210714", "WREF_073_O_20210623", "NIWO_004_O_20210726", "YELL_051_M_20210705", "YELL_048_M_20210707", "WREF_003_O_20210622", "HEAL_048_M_20210622", "BONA_006_O_20210707", "GUAN_003_M_20210922", "KONZ_024_M_20210719", "KONZ_045_M_20210721", "SRER_006_M_20210809", "GUAN_007_M_20210922", "CLBJ_002_M_20210506", "KONZ_043_M_20210721", "GUAN_048_M_20210920", "WREF_001_O_20210621", "TOOL_043_O_20210803", "WOOD_005_M_20210708", "YELL_046_M_20210705", "BONA_001_O_20210708", "GUAN_042_M_20210920", "ONAQ_005_M_20210527", "TOOL_004_O_20210805", "TEAK_025_M_20210726", "KONZ_046_M_20210720", "TEAK_004_O_20210726", "WOOD_024_M_20210714", "BONA_009_O_20210707", "CLBJ_001_M_20210506"]}, "metadata": [["WOOD_002_M_20210708", "WOOD_002-M-20210708-COMP", "WOOD", "WOOD_002", "grasslandHerbaceous", "M", "18.9", "1.6666666666666667", "20210708.0", "47.136134", "-99.232896", "573.6", "7.833333333333333", "-22.033333333333335", "0.41333333333333333", "5.886666666666667", "NA", "7.261330918894823", "6.707714000244737"], ["SRER_004_M_20210809", "SRER_004-M-20210809-COMP", "SRER", "SRER_004", "shrubScrub", "M", "26.366666666666667", "0.0", "20210809.0", "31.906778", "-110.815262", "1044.5", "6.366666666666666", "-18.833333333333332", "0.10666666666666667", "1.1266666666666667", "NA", "7.543271808217339", "6.837815629137882"], ["YELL_003_M_20210708", "YELL_003-M-20210708-COMP", "YELL", "YELL_003", "shrubScrub", "M", "18.433333333333334", "0.5", "20210708.0", "44.954777", "-110.533202", "2120.8", "NA", "NA", "NA", "NA", "NA", "6.318361229686992", "5.323576459791146"], ["SRER_052_M_20210810", "SRER_052-M-20210810-COMP", "SRER", "SRER_052", "shrubScrub", "M", "26.83333333333333", "0.0", "20210810.0", "31.909531", "-110.833359", "1002.3", "6.8", "-20.099999999999998", "0.04666666666666667", "0.59", "NA", "8.723154916194568", "8.086253228448685"], ["TOOL_042_O_20210803", "TOOL_042-O-20210803-COMP", "TOOL", "TOOL_042", "sedgeHerbaceous", "O", "3.4666666666666663", "0.0", "20210803.0", "68.664072", "-149.381292", "805.4", "NA", "NA", "NA", "NA", "NA", "5.339322460152878", "4.510074400263498"], ["TOOL_041_O_20210803", "TOOL_041-O-20210803-COMP", "TOOL", "TOOL_041", "sedgeHerbaceous", "O", "8.4", "0.0", "20210803.0", "68.666666", "-149.369752", "827.4", "NA", "NA", "NA", "NA", "NA", "5.381764787734271", "5.113455688188569"], ["NIWO_002_M_20210728", "NIWO_002-M-20210728-COMP", "NIWO", "NIWO_002", "evergreenForest", "M", "12.7", "2.5", "20210728.0", "40.041058", "-105.547043", "3059.6", "NA", "NA", "NA", "NA", "NA", "4.571461289534102", "3.825101485120449"], ["YELL_005_M_20210708", "YELL_005-M-20210708-COMP", "YELL", "YELL_005", "shrubScrub", "M", "26.83333333333333", "0.3333333333333333", "20210708.0", "44.948383", "-110.631377", "2112.0", "NA", "NA", "NA", "NA", "NA", "6.531476783340843", "5.640861866963761"], ["TEAK_003_M_20210726", "TEAK_003-M-20210726-COMP", "TEAK", "TEAK_003", "evergreenForest", "M", "18.9", "3.0", "20210726.0", "37.012962", "-119.010619", "2201.1", "2.25", "-24.383333333333333", "0.26", "6.083333333333334", "23.066666666666666", "5.884481289602605", "5.132917029715702"], ["WOOD_004_M_20210714", "WOOD_004-M-20210714-COMP", "WOOD", "WOOD_004", "grasslandHerbaceous", "M", "18.566666666666663", "1.6666666666666667", "20210714.0", "47.12584", "-99.253801", "594.1", "7.233333333333333", "-23.933333333333334", "0.39666666666666667", "5.3533333333333335", "NA", "6.662667906415856", "6.098531822580724"], ["WREF_073_O_20210623", "WREF_073-O-20210623-COMP", "WREF", "WREF_073", "evergreenForest", "O", "15.65", "4.8", "20210623.0", "45.825842", "-121.960125", "371.8", "NA", "NA", "NA", "NA", "NA", "4.51504474530422", "3.673688572020429"], ["NIWO_004_O_20210726", "NIWO_004-O-20210726-COMP", "NIWO", "NIWO_004", "evergreenForest", "O", "11.8", "3.0", "20210726.0", "40.043059", "-105.581501", "3312.5", "NA", "NA", "NA", "NA", "NA", "4.4", "3.87"], ["YELL_051_M_20210705", "YELL_051-M-20210705-COMP", "YELL", "YELL_051", "shrubScrub", "M", "14.766666666666666", "0.6666666666666666", "20210705.0", "44.954277", "-110.541571", "2119.7", "NA", "NA", "NA", "NA", "NA", "5.940702007577076", "5.1743139653315575"], ["YELL_048_M_20210707", "YELL_048-M-20210707-COMP", "YELL", "YELL_048", "evergreenForest", "M", "14.466666666666669", "2.6666666666666665", "20210707.0", "44.951273", "-110.536649", "2149.0", "NA", "NA", "NA", "NA", "NA", "5.780631760670103", "4.941155897479059"], ["WREF_003_O_20210622", "WREF_003-O-20210622-COMP", "WREF", "WREF_003", "evergreenForest", "O", "14.3", "1.6", "20210622.0", "45.831516", "-122.018608", "602.1", "NA", "NA", "NA", "NA", "NA", "3.97", "3.16"], ["HEAL_048_M_20210622", "HEAL_048-M-20210622-COMP", "HEAL", "HEAL_048", "dwarfScrub", "M", "3.3", "0.0", "20210622.0", "63.875088", "-149.210438", "677.6", "1.15", "-25.75", "1.46", "39.504999999999995", "27.75", "4.3243823032006485", "3.7089646597059382"], ["BONA_006_O_20210707", "BONA_006-O-20210707-COMP", "BONA", "BONA_006", "evergreenForest", "O", "10.233333333333333", "1.1666666666666667", "20210707.0", "65.176107", "-147.544089", "507.0", "NA", "NA", "NA", "NA", "NA", "4.11691635587743", "3.9139034857628174"], ["GUAN_003_M_20210922", "GUAN_003-M-20210922-COMP", "GUAN", "GUAN_003", "evergreenForest", "M", "26.9", "4.666666666666667", "20210922.0", "17.973138", "-66.861701", "181.0", "NA", "NA", "NA", "NA", "NA", "7.655890567794073", "7.27837238495001"], ["KONZ_024_M_20210719", "KONZ_024-M-20210719-COMP", "KONZ", "KONZ_024", "deciduousForest", "M", "20.466666666666665", "0.3333333333333333", "20210719.0", "39.110903", "-96.552209", "351.0", "NA", "NA", "NA", "NA", "NA", "7.613580199704036", "7.183659743648566"], ["KONZ_045_M_20210721", "KONZ_045-M-20210721-COMP", "KONZ", "KONZ_045", "grasslandHerbaceous", "M", "23.566666666666663", "0.0", "20210721.0", "39.103827", "-96.561811", "392.1", "NA", "NA", "NA", "NA", "NA", "7.385327361560392", "6.7864695430513775"], ["SRER_006_M_20210809", "SRER_006-M-20210809-COMP", "SRER", "SRER_006", "shrubScrub", "M", "26.53333333333333", "1.0333333333333334", "20210809.0", "31.795656", "-110.910239", "1048.6", "7", "-20.166666666666668", "0.07333333333333333", "0.6966666666666667", "NA", "7.2423890277729885", "6.190784492134266"], ["GUAN_007_M_20210922", "GUAN_007-M-20210922-COMP", "GUAN", "GUAN_007", "evergreenForest", "M", "26.33333333333333", "6.333333333333333", "20210922.0", "17.972832", "-66.857711", "172.4", "NA", "NA", "NA", "NA", "NA", "7.904983076929779", "7.424065728693269"], ["CLBJ_002_M_20210506", "CLBJ_002-M-20210506-COMP", "CLBJ", "CLBJ_002", "deciduousForest", "M", "17.4", "0.8333333333333334", "20210506.0", "33.40398", "-97.571138", "263.1", "NA", "NA", "NA", "NA", "NA", "6.432538039992389", "5.547407523005221"], ["KONZ_043_M_20210721", "KONZ_043-M-20210721-COMP", "KONZ", "KONZ_043", "grasslandHerbaceous", "M", "20.766666666666666", "1.5", "20210721.0", "39.102192", "-96.56118", "405.4", "NA", "NA", "NA", "NA", "NA", "6.751301699896741", "5.94132596702062"], ["GUAN_048_M_20210920", "GUAN_048-M-20210920-COMP", "GUAN", "GUAN_048", "evergreenForest", "M", "27.433333333333334", "5.166666666666667", "20210920.0", "17.96911", "-66.864276", "130.1", "NA", "NA", "NA", "NA", "NA", "7.676413727938582", "7.050993114975192"], ["WREF_001_O_20210621", "WREF_001-O-20210621-COMP", "WREF", "WREF_001", "evergreenForest", "O", "13.166666666666666", "3.2333333333333334", "20210621.0", "45.844033", "-121.999068", "666.4", "NA", "NA", "NA", "NA", "NA", "4.293902440845196", "3.435722224924258"], ["TOOL_043_O_20210803", "TOOL_043-O-20210803-COMP", "TOOL", "TOOL_043", "sedgeHerbaceous", "O", "8.133333333333333", "0.0", "20210803.0", "68.665514", "-149.375519", "821.6", "NA", "NA", "NA", "NA", "NA", "4.983937855019178", "4.211318036784667"], ["WOOD_005_M_20210708", "WOOD_005-M-20210708-COMP", "WOOD", "WOOD_005", "grasslandHerbaceous", "M", "21.8", "0.5", "20210708.0", "47.149339", "-99.251928", "590.3", "5.933333333333334", "-19.3", "0.24333333333333335", "1", "NA", "7.928605057087394", "7.381795094329045"], ["YELL_046_M_20210705", "YELL_046-M-20210705-COMP", "YELL", "YELL_046", "evergreenForest", "M", "13.5", "1.0", "20210705.0", "44.952363", "-110.541582", "2155.4", "NA", "NA", "NA", "NA", "NA", "6.480904400833558", "5.844094407618687"], ["BONA_001_O_20210708", "BONA_001-O-20210708-COMP", "BONA", "BONA_001", "deciduousForest", "O", "7.800000000000001", "2.333333333333333", "20210708.0", "65.174447", "-147.478155", "374.1", "NA", "NA", "NA", "NA", "NA", "4.126778195420624", "4.002020306731386"], ["GUAN_042_M_20210920", "GUAN_042-M-20210920-COMP", "GUAN", "GUAN_042", "evergreenForest", "M", "28.1", "8.333333333333334", "20210920.0", "17.970725", "-66.863969", "144.8", "NA", "NA", "NA", "NA", "NA", "7.629825398875229", "7.308129986825913"], ["ONAQ_005_M_20210527", "ONAQ_005-M-20210527-COMP", "ONAQ", "ONAQ_005", "shrubScrub", "M", "14.533333333333331", "0.0", "20210527.0", "40.180775", "-112.431854", "1614.4", "8.066666666666666", "-19.766666666666666", "0.09666666666666666", "0.75", "NA", "8.595863849576412", "7.862242049539287"], ["TOOL_004_O_20210805", "TOOL_004-O-20210805-COMP", "TOOL", "TOOL_004", "dwarfScrub", "O", "4.366666666666667", "0.0", "20210805.0", "68.616768", "-149.629355", "782.2", "NA", "NA", "NA", "NA", "NA", "4.874881982540428", "4.256399363512844"], ["TEAK_025_M_20210726", "TEAK_025-M-20210726-COMP", "TEAK", "TEAK_025", "shrubScrub", "M", "20.266666666666666", "4.0", "20210726.0", "36.989997", "-119.024514", "2305.0", "1.6", "-24.733333333333334", "0.18333333333333335", "4.5", "24.5", "5.211493024318454", "4.481672771268569"], ["KONZ_046_M_20210720", "KONZ_046-M-20210720-COMP", "KONZ", "KONZ_046", "shrubScrub", "M", "21.4", "0.3333333333333333", "20210720.0", "39.103068", "-96.563925", "405.7", "NA", "NA", "NA", "NA", "NA", "6.952600815765721", "6.420307847725707"], ["TEAK_004_O_20210726", "TEAK_004-O-20210726-COMP", "TEAK", "TEAK_004", "evergreenForest", "O", "22.0", "5.0", "20210726.0", "37.001687", "-119.036304", "2190.5", "-1.5", "-26.4", "0.64", "18.27", "NA", "5.02", "4.3"], ["WOOD_024_M_20210714", "WOOD_024-M-20210714-COMP", "WOOD", "WOOD_024", "emergentHerbaceousWetlands", "M", "14.6", "10.0", "20210714.0", "47.151171", "-99.262648", "586.6", "5.933333333333334", "-24.133333333333333", "0.62", "7.93", "NA", "7.925236557607071", "7.662862320293173"], ["BONA_009_O_20210707", "BONA_009-O-20210707-COMP", "BONA", "BONA_009", "shrubScrub", "O", "6.333333333333333", "4.5", "20210707.0", "65.169192", "-147.520277", "429.6", "NA", "NA", "NA", "NA", "NA", "4.532716406642954", "4.227223699516469"], ["CLBJ_001_M_20210506", "CLBJ_001-M-20210506-COMP", "CLBJ", "CLBJ_001", "deciduousForest", "M", "18.633333333333333", "2.0", "20210506.0", "33.397987", "-97.568339", "278.1", "NA", "NA", "NA", "NA", "NA", "6.169992753184524", "5.292946477873531"]], "metadata_headers": ["SampleID", "genomicsSampleID", "siteID", "plotID", "nlcdClass", "horizon", "soilTemp", "litterDepth", "collectionDate", "decimalLatitude", "decimalLongitude", "elevation", "d15N", "organicd13C", "nitrogenPercent", "organicCPercent", "CNratio", "soilInWaterpH", "soilInCaClpH"], "settings": {}, "type": "scatter"}};
+
+  var plot, biplot = null, ec;
+
+  function init() {
+    // Initialize the DecompositionModel for the scatter plot, and optionally
+    // add one for the biplot arrows
+    plot = new DecompositionModel(data.plot.decomposition,
+                                  data.plot.metadata_headers,
+                                  data.plot.metadata,
+                                  data.plot.type);
+
+    if (data.biplot) {
+      biplot = new DecompositionModel(data.biplot.decomposition,
+                                      data.biplot.metadata_headers,
+                                      data.biplot.metadata,
+                                      data.biplot.type);
+    }
+
+    ec = new EmperorController(plot, biplot, "emperor-notebook-0x69e8e2b2", undefined,
+                               data.info);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    ec.render();
+  }
+  $(window).resize(function() {
+    ec.resize(div.innerWidth(), div.innerHeight());
+  });
+
+  $(function(){
+    init();
+    animate();
+
+    ec.ready = function () {
+      // any other code that needs to be executed when emperor is loaded should
+      // go here
+      ec.loadConfig(data.plot.settings);
+
+      // sets up generic callbacks for 3rd party consumers
+      var plotView = ec.sceneViews[0];
+      /*__custom_on_ready_code__*/
+      
+    }
+  });
+
+}); // END REQUIRE.JS block
+    </script>
+  </body>
+</html>

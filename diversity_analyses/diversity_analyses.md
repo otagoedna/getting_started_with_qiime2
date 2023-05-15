@@ -40,7 +40,7 @@ Several statistical and visual outputs are produced, including PCOA plots. Here 
 
 [**VISUALISATION: bray-curtis emperor plot**](../bray_curtis_emp_pcoa/index.html)
 
-[**VISUALISATION: bray-curtis emperor plot**](../nad_bray_curtis_emp_pcoa/index.html)
+[**VISUALISATION: nad bray-curtis emperor plot**](../nad_bray_curtis_emp_pcoa/index.html)
 
 ### Alpha diversity (within samples)
 
